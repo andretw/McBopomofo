@@ -96,7 +96,8 @@ enum {
     kPageDownKeyCode = 121,
     kHomeKeyCode = 115,
     kEndKeyCode = 119,
-    kDeleteKeyCode = 117
+    kDeleteKeyCode = 117,
+    kShiftKeyCode = 16
 };
 
 // a global object for saving the "learned" user candidate selections
@@ -672,6 +673,12 @@ public:
         return YES;
     }
 
+    // Shift
+    if (charCode == 27){
+        [self beep];
+        return YES;
+    }
+    
     // Esc
     if (charCode == 27) {
         // if reading is not empty, we cancel the reading; Apple's built-in Zhuyin (and the erstwhile Hanin) has a default option that Esc "cancels" the current composed character and revert it to Bopomofo reading, in odds with the expectation of users from other platforms
